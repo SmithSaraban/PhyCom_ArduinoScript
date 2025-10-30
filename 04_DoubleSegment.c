@@ -2,7 +2,7 @@
 #include <string.h>
 
 const int segments[] = {2, 3, 4, 5, 6, 7, 8}; // Segment pins a-g
-const int leftSegment = 12, rightSegment = 11;
+const int rightSegment = 9, leftSegment = 10;
 
 // Digit segment patterns (0-9)
 const int digitPatterns[][7] = {
@@ -40,9 +40,9 @@ void showTwoDigits(int digit1, int digit2) {
     unsigned long startTime = millis();
     while (millis() - startTime < 1000) {
         displayDigit(digit1, leftSegment);
-        delay(25);
+        delay(5);
         displayDigit(digit2, rightSegment);
-        delay(25);
+        delay(5);
     }
 }
 
@@ -53,4 +53,9 @@ void displayDigit(int digit, int activeSegment) {
     for (int i = 0; i < 7; i++) {
         digitalWrite(segments[i], digitPatterns[digit][i] ? HIGH : LOW);
     }
+}
+    for (int i = 0; i < 7; i++) {
+        digitalWrite(segments[i], digitPatterns[digit][i] ? HIGH : LOW);
+    }
+
 }
